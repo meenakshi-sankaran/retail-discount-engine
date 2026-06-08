@@ -49,3 +49,35 @@ if (customerType === "student") {
 
 console.log(`\nActive Tier: ${customerType} | Extra Price Reduction: ${extraDiscount * 100}%`);
 
+// Step 5: Simulate checkout for 3 separate shoppers using a while loop
+console.log("\n--- Simulating Order Checkouts ---");
+let activeProduct = products[1]; // Let's simulate purchases for Designer Jeans
+let shopperCount = 1;
+
+while (shopperCount <= 3) {
+    // Apply loyalty discount layer to the product's price
+    let finalBill = activeProduct.price * (1 - extraDiscount);
+    
+    // Decrease stock count by 1 unit
+    activeProduct.inventory--;
+
+    console.log(`Shopper #${shopperCount} Checkout Total: $${finalBill.toFixed(2)} (Stock remaining: ${activeProduct.inventory})`);
+    shopperCount++;
+}
+
+// Step 6: Use a for...in loop to display properties of a single item
+console.log("\n--- Object Property Inspection ---");
+let sampleItem = products[1];
+
+for (let property in sampleItem) {
+    console.log(`${property}: ${sampleItem[property]}`);
+}
+
+// Step 7: Use Object.entries() and destructuring to print final inventory status
+console.log("\n--- Final System Inventory Status ---");
+for (let item of products) {
+    console.log(`Product Record:`);
+    for (let [propName, propValue] of Object.entries(item)) {
+        console.log(`  ${propName.toUpperCase()}: ${propValue}`);
+    }
+}
